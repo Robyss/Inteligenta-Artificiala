@@ -1,0 +1,9 @@
+Preprocesarea datelor:
+
+
+Bag of words:
+
+Stopwords
+Lemanizare
+
+0.5496091401082381
