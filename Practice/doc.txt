@@ -1,9 +1,0 @@
-Preprocesarea datelor:
-
-
-Bag of words:
-
-Stopwords
-Lemanizare
-
-SVM no prep: 
