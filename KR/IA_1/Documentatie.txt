@@ -1,6 +1,5 @@
-1.
-2. generare_succesor()
-3.
+Utilizare: main.py [input_directory] [output_directory] [NSOL] [timeout]
+
 
 A*
 Folosim priority_queue(f(nod), nod)
