@@ -1,0 +1,22 @@
+Metoda BFS
+Numarul de solutii generate: 1
+
+Solutia nr 1: 
+0)
+[1, 4]  				
+[2, 3]  [4, 8]  		
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+
+1)
+[2, 3]  [4, 8]  [1, 4]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+
+Drum de lungime: 1
+Timpul de executie: 0.9990 ms | 0.0010 s
+Numarul maxim de noduri existente in memorie: 10
+Numarul total de noduri calculate: 11
+
+#################################### 
+

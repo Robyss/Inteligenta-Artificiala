@@ -1,0 +1,26 @@
+DFS iterativ
+IDA*
+Determinare fara solutii
+
+
+4. Identificarea starii fara solutie?
+Implementare pentru cazurile:
+- nu putem muta intervalele nicaieri
+- sunt mai multe multimi de intervale
+distincte decat stive
+
+Solutii cu stare finala diferita?
+Merge si asa
+Implementare hash map?
+
+Optimizare: găsirea unui mod de
+reprezentare a stării, cât mai eficient
+?????
+
+Daca sunt doua noduri cu acelasi f,
+se aseaza inainte nodul cu g-ul mai mare.
+Echivalent cu h-ul mai mic.
+
+""" Daca mentionezi alta euristica in afara de cele date, o sa mearga pana la infinit.
+Se foloseste nod.h pentru a afla daca un nod e stare scop, iar daca nu s-a efectuat
+euristica, cautarile nu vor avea alta conditie de oprire. """

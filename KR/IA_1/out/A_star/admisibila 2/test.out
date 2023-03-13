@@ -1,0 +1,269 @@
+Metoda A_star
+Numarul de solutii generate: 3
+
+Solutia nr 1: 
+0)
+[4, 5]  		[4, 6]  
+[3, 6]  		[3, 4]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 0     Costul mutarii: 0
+
+1)
+[4, 6]  				
+[4, 5]  				
+[3, 6]  		[3, 4]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 2     Costul mutarii: 2
+
+2)
+[4, 6]  				
+[4, 5]  				
+[3, 6]  [3, 4]  		
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 3     Costul mutarii: 1
+
+3)
+[4, 5]  				
+[3, 6]  [3, 4]  [4, 6]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 5     Costul mutarii: 2
+
+4)
+				[4, 5]  
+[3, 6]  [3, 4]  [4, 6]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 6     Costul mutarii: 1
+
+5)
+				[3, 4]  
+				[4, 5]  
+[3, 6]  		[4, 6]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 7     Costul mutarii: 1
+
+6)
+				[2, 3]  
+				[3, 4]  
+				[4, 5]  
+[3, 6]  		[4, 6]  
+[1, 5]  		[3, 7]  
+------------------------
+Costul drumului: 8     Costul mutarii: 1
+
+7)
+				[2, 3]  
+				[3, 4]  
+				[4, 5]  
+				[4, 6]  
+[1, 5]  [3, 6]  [3, 7]  
+------------------------
+Costul drumului: 11     Costul mutarii: 3
+
+8)
+				[3, 4]  
+				[4, 5]  
+[2, 3]  		[4, 6]  
+[1, 5]  [3, 6]  [3, 7]  
+------------------------
+Costul drumului: 12     Costul mutarii: 1
+
+9)
+				[4, 5]  
+[2, 3]  [3, 4]  [4, 6]  
+[1, 5]  [3, 6]  [3, 7]  
+------------------------
+Costul drumului: 13     Costul mutarii: 1
+
+Drum de lungime: 9
+Costul total: 13
+Timpul de executie: 213.9766 ms | 0.2140 s
+Numarul maxim de noduri existente in memorie: 1095
+Numarul total de noduri calculate: 1499
+
+#################################### 
+
+Solutia nr 2: 
+0)
+[4, 5]  		[4, 6]  
+[3, 6]  		[3, 4]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 0     Costul mutarii: 0
+
+1)
+[4, 6]  				
+[4, 5]  				
+[3, 6]  		[3, 4]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 2     Costul mutarii: 2
+
+2)
+[4, 6]  				
+[4, 5]  				
+[3, 6]  [3, 4]  		
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 3     Costul mutarii: 1
+
+3)
+[4, 5]  [4, 6]  		
+[3, 6]  [3, 4]  		
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 5     Costul mutarii: 2
+
+4)
+		[4, 5]  		
+		[4, 6]  		
+[3, 6]  [3, 4]  		
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 6     Costul mutarii: 1
+
+5)
+		[4, 5]  		
+		[4, 6]  		
+		[3, 4]  [3, 6]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 9     Costul mutarii: 3
+
+6)
+		[4, 6]  		
+[4, 5]  [3, 4]  [3, 6]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 10     Costul mutarii: 1
+
+7)
+				[4, 6]  
+[4, 5]  [3, 4]  [3, 6]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 12     Costul mutarii: 2
+
+8)
+				[4, 5]  
+				[4, 6]  
+		[3, 4]  [3, 6]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 13     Costul mutarii: 1
+
+9)
+				[4, 5]  
+				[4, 6]  
+[3, 4]  		[3, 6]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 14     Costul mutarii: 1
+
+Drum de lungime: 9
+Costul total: 14
+Timpul de executie: 372.9806 ms | 0.3730 s
+Numarul maxim de noduri existente in memorie: 2199
+Numarul total de noduri calculate: 3012
+
+#################################### 
+
+Solutia nr 3: 
+0)
+[4, 5]  		[4, 6]  
+[3, 6]  		[3, 4]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 0     Costul mutarii: 0
+
+1)
+[4, 6]  				
+[4, 5]  				
+[3, 6]  		[3, 4]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 2     Costul mutarii: 2
+
+2)
+[4, 6]  				
+[4, 5]  				
+[3, 6]  [3, 4]  		
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 3     Costul mutarii: 1
+
+3)
+[4, 5]  				
+[3, 6]  [3, 4]  [4, 6]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 5     Costul mutarii: 2
+
+4)
+				[4, 5]  
+[3, 6]  [3, 4]  [4, 6]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 6     Costul mutarii: 1
+
+5)
+				[3, 4]  
+				[4, 5]  
+[3, 6]  		[4, 6]  
+[1, 5]  [2, 3]  [3, 7]  
+------------------------
+Costul drumului: 7     Costul mutarii: 1
+
+6)
+				[2, 3]  
+				[3, 4]  
+				[4, 5]  
+[3, 6]  		[4, 6]  
+[1, 5]  		[3, 7]  
+------------------------
+Costul drumului: 8     Costul mutarii: 1
+
+7)
+				[2, 3]  
+				[3, 4]  
+				[4, 5]  
+				[4, 6]  
+[1, 5]  [3, 6]  [3, 7]  
+------------------------
+Costul drumului: 11     Costul mutarii: 3
+
+8)
+				[3, 4]  
+				[4, 5]  
+[2, 3]  		[4, 6]  
+[1, 5]  [3, 6]  [3, 7]  
+------------------------
+Costul drumului: 12     Costul mutarii: 1
+
+9)
+[3, 4]  		[4, 5]  
+[2, 3]  		[4, 6]  
+[1, 5]  [3, 6]  [3, 7]  
+------------------------
+Costul drumului: 13     Costul mutarii: 1
+
+10)
+				[4, 5]  
+[2, 3]  [3, 4]  [4, 6]  
+[1, 5]  [3, 6]  [3, 7]  
+------------------------
+Costul drumului: 14     Costul mutarii: 1
+
+Drum de lungime: 10
+Costul total: 14
+Timpul de executie: 376.9791 ms | 0.3770 s
+Numarul maxim de noduri existente in memorie: 2222
+Numarul total de noduri calculate: 3043
+
+#################################### 
+

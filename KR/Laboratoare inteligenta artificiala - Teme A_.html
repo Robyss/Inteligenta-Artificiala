@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)http://irinaciocan.ro/inteligenta_artificiala/teme_a_star_mi.php -->
+<html lang="ro"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="./Laboratoare inteligenta artificiala - Teme A__files/stil.css">
+    <link rel="shortcut icon" type="image/x-icon" href="http://irinaciocan.ro/inteligenta_artificiala/favicon.ico">
+	<!--<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />-->
+	
+	<meta name="author" content="Irina Ciocan">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="./Laboratoare inteligenta artificiala - Teme A__files/jquery-3.1.1.js.download"></script>          
+	<script type="text/javascript" src="./Laboratoare inteligenta artificiala - Teme A__files/modernizr-custom.js.download"></script> 
+	<!--[if lt IE 9]>	
+		<script type="text/javascript" src="/biblioteca/html5shiv.js"></script>
+	<![endif]-->
+		<script type="text/javascript" src="./Laboratoare inteligenta artificiala - Teme A__files/functiile_mele.js.download"></script>
+	
+	<script type="text/javascript" src="./Laboratoare inteligenta artificiala - Teme A__files/cuprins.js.download"></script>
+
+
+<title>Laboratoare inteligenta artificiala - Teme A*</title><style>
+hr.despartitor_tema{
+	height:3px;
+	background:grey;
+	border-radius:4px;
+}
+</style>
+
+
+ 
+<script type="text/javascript">
+<!--
+
+
+//pentru cookie-uri
+
+function getCookie(c_name)
+{
+var i,x,y,ARRcookies=document.cookie.split(";");
+for (i=0;i<ARRcookies.length;i++)
+  {
+  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+  x=x.replace(/^\s+|\s+$/g,"");
+  if (x==c_name)
+    {
+    return unescape(y);
+    }
+  }
+}
+
+function setCookie(c_name,value,exdays)
+{
+var exdate=new Date();
+exdate.setDate(exdate.getDate() + exdays);
+var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+document.cookie=c_name + "=" + c_value;
+}
+
+
+
+
+function st_pag_menu()
+{
+var url_pag=document.URL;
+var ind_menu_pag=url_pag.lastIndexOf("/");// http://irinaciocan.ro... => index 19
+var menu_pag=url_pag.substr(ind_menu_pag+1,url_pag.length-ind_menu_pag-5);//5=.html
+//alert(menu_pag);
+var opt_meniu=document.getElementById(menu_pag);
+if(opt_meniu)
+	//opt_meniu.style.color="black";
+	opt_meniu.style.boxShadow="0px 0px 0.2em inset black";
+}
+
+
+function pozitioneazaMeniu(offset) 
+		{
+			var $sidebar   = $("nav#meniu_sus");
+			$window    = $(window);
+			var margine_sus=$("header.principal").outerHeight();
+			if ($window.scrollTop() > margine_sus) 
+			//if ($sidebar.scrollTop() > 0) 
+			{
+					//$sidebar.css("top", $window.scrollTop()); //- offset.top);
+					$sidebar.css("position","fixed");
+					$sidebar.css("top","0px");
+				
+			} 
+			else 
+			{
+					$sidebar.css("position","absolute");
+					$sidebar.css("top",margine_sus+"px");
+
+			}
+		}
+
+
+
+
+$(document).ready(
+	function()
+	{
+			//pozitioneazaMeniu();
+			var $sidebar   = $("nav#meniu_sus");
+			$window    = $(window);
+			var offset_meniu = $sidebar.offset();
+			$(window).scroll(function(){
+				pozitioneazaMeniu(offset_meniu);
+			});	
+			$(".opt_meniu").attr("dataDeschis","inchis");
+			$(".opt_meniu").append("<img class='acces_submeniu' src='/imagini/triunghi_alb_mic_b_jos.png' alt=''>");
+			$(".opt_meniu").click(
+				function()
+				{
+					
+					//$plusulet=$(this).find("span.acces_submeniu");
+					//if($(".opt_meniu").attr("dataDeschis")=="inchis")
+					if($(this).attr("dataDeschis")=="inchis")
+					{
+						//$plusulet.text("-");
+						$elem_curent=$(this);
+						//$plusulet.text("+");
+						$(".opt_meniu").each(
+							function() {
+								if($(this)!=$elem_curent)
+								{
+									$(this).attr("dataDeschis","inchis");
+									$submeniu=$(this).next("ul");
+									$submeniu.css("display","none");
+									$(this).find(".acces_submeniu").attr("src",'/imagini/triunghi_alb_mic_b_jos.png');
+								}
+							}
+						);
+						$(this).attr("dataDeschis","deschis");		
+						$submeniu=$(this).next("ul");
+						$submeniu.css("display","block");
+						$(this).find(".acces_submeniu").attr("src",'/imagini/triunghi_alb_mic_b_sus.png');
+					}
+					else
+					{
+
+
+						$(this).attr("dataDeschis","inchis");
+						$submeniu=$(this).next("ul");
+						$submeniu.css("display","none");
+						$(this).find(".acces_submeniu").attr("src",'/imagini/triunghi_alb_mic_b_jos.png');
+
+					}
+
+				}
+			);
+	}
+);
+
+//daca ecranul e mai lat, expandeaza divurile in latime
+
+
+//-->
+</script>
+
+<style type="text/css">@font-face { font-family: Roboto; src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf"); }</style></head>
+<body onload="initial()">
+	<header class="principal">
+		<h1>Inteligenta Artificiala</h1>
+		<div id="nume_login">
+			<p class="alerta">Esti logat drept <span class="user">RobertSorete</span></p> <a class="link_login" href="http://irinaciocan.ro/inteligenta_artificiala/logout.php">Logout</a><br>		</div>
+		<nav id="meniu_sus">
+			<ul class="meniu_principal">
+
+
+				<li>
+					<a id="index" href="http://irinaciocan.ro/inteligenta_artificiala/index.php">Principal</a>
+				</li>
+				<li>
+					<a id="inregistrare" href="http://irinaciocan.ro/inteligenta_artificiala/inregistrare.php">Inregistrare</a>
+				</li>
+				<li>
+					<a style="color:red;" id="regulament" href="http://irinaciocan.ro/inteligenta_artificiala/regulament.php">Regulament</a>
+				</li>
+				<!--
+				<li>
+					<a id="barem_proiect" class="optiune_importanta" href="/inteligenta_artificiala/barem_proiect.php">Barem proiect</a>
+				</li>
+				-->
+				<li>
+					<button class="opt_meniu" id="laboratoare" datadeschis="inchis">Laboratoare<img class="acces_submeniu" src="./Laboratoare inteligenta artificiala - Teme A__files/triunghi_alb_mic_b_jos.png" alt=""></button>
+					<ul>
+						<!--<li><a id="lab0" href="/inteligenta_artificiala/lab0.php">Laborator 0<br></a></li>
+						<li><a id="lab1" href="/inteligenta_artificiala/lab1.php">Laborator 1<br></a></li>
+						<li><a id="lab2" href="/inteligenta_artificiala/lab2.php">Laborator 2<br></a></li>
+						<li><a id="lab3" href="/inteligenta_artificiala/lab3.php">Laborator 3<br></a></li>
+						<li><a id="lab4" href="/inteligenta_artificiala/lab4.php">Laborator 4<br></a></li>
+						<li><a id="lab5" href="/inteligenta_artificiala/lab5.php">Laborator 5<br></a></li>
+						<li><a id="lab6" href="/inteligenta_artificiala/lab6.php">Laborator 6<br></a></li>
+						<li><a id="lab7" href="/inteligenta_artificiala/lab7.php" style='color:red' title='pentru examen, va rog sa rezolvati toate exercitiile cu arbori'>Laborator 7<br></a></li>-->
+						
+						<li><a id="python-structuri-baza" href="http://irinaciocan.ro/inteligenta_artificiala/python-structuri-baza.php">Python 1</a></li>
+						<li><a id="python-comprehensions" href="http://irinaciocan.ro/inteligenta_artificiala/python-comprehensions.php">Python 2</a></li>
+						<li><a id="python-clase" href="http://irinaciocan.ro/inteligenta_artificiala/python-clase.php">Python 3</a></li>
+						
+						<li><a id="grafuri" href="http://irinaciocan.ro/inteligenta_artificiala/grafuri.php">Grafuri<br></a></li>
+						
+						<li><a id="lab8" href="http://irinaciocan.ro/inteligenta_artificiala/cautarea_bf.php">Cautarea BF<br></a></li>
+						<li><a id="lab9" href="http://irinaciocan.ro/inteligenta_artificiala/cautarea_df.php">Cautarea DF<br></a></li>
+						<li><a id="pb_blocuri" href="http://irinaciocan.ro/inteligenta_artificiala/pb_blocuri.php">Pb blocuri</a></li>
+						<li><a id="pb_canmis" href="http://irinaciocan.ro/inteligenta_artificiala/pb_canmis.php">Can mis</a></li>
+						
+						<li><a id="lab12" href="http://irinaciocan.ro/inteligenta_artificiala/lab12.php">UCS<br></a></li>
+						
+						<li><a id="a_star" href="http://irinaciocan.ro/inteligenta_artificiala/a_star.php">A*</a></li>
+						<li><a id="pb_8puzzle" href="http://irinaciocan.ro/inteligenta_artificiala/pb_8puzzle.php">8 puzzle</a></li>
+						<li><a id="teme-a-star" href="http://irinaciocan.ro/inteligenta_artificiala/teme-a-star.php">Teme A* (Info)</a></li>
+						<li><a id="exemple-teme-a-star" href="http://irinaciocan.ro/inteligenta_artificiala/exemple-teme-a-star.php">Exemple A*</a></li>
+						<li><a id="minimax-alpha-beta" href="http://irinaciocan.ro/inteligenta_artificiala/minimax-alpha-beta.php">Minimax|α-β</a></li>
+						<li><a id="teme_jocuri" href="http://irinaciocan.ro/inteligenta_artificiala/teme_jocuri.php">Exemple Jocuri</a></li>
+						<li><a id="tema_jocuri" href="http://irinaciocan.ro/inteligenta_artificiala/tema-jocuri.php">Tema Jocuri (Info)</a></li>
+						<li><a id="teme_a_star_mi" href="http://irinaciocan.ro/inteligenta_artificiala/teme_a_star_mi.php" style="box-shadow: black 0px 0px 0.2em inset;">Teme căutare (Mate-Info, CTI)</a></li>
+						<li><a id="teme_jocuri_mi" href="http://irinaciocan.ro/inteligenta_artificiala/teme_jocuri_mi.php">Teme jocuri (Mate-Info, CTI)</a></li>
+						<li><a id="recapitulare1" href="http://irinaciocan.ro/inteligenta_artificiala/recapitulare1.php">Recapitulare-1</a></li>
+						<!--
+						<li><a id="lab13" href="/inteligenta_artificiala/lab13.php">A*<br></a></li>
+						<li><a id="lab14" href="/inteligenta_artificiala/lab14.php">8-puzzle<br></a></li>
+						<li><a id="lab15" href="/inteligenta_artificiala/lab15.php">Jocuri<br></a></li>
+						-->
+					</ul>
+				</li>
+				<!--
+				<li>
+					<button class="opt_meniu" id="mi">M.I.</button>
+					<ul>
+						<li><a id="mi_lab1" href="/inteligenta_artificiala/mi_lab1.php">M.I. 1<br></a></li>
+						<li><a id="mi_lab2" href="/inteligenta_artificiala/mi_lab2.php">M.I. 2<br></a></li>
+						<li><a id="mi_lab3" href="/inteligenta_artificiala/mi_lab3.php">M.I. 3<br></a></li>
+						<li><a id="mi_lab4" href="/inteligenta_artificiala/mi_lab4.php">M.I. 4<br></a></li>
+						<li><a id="mi_lab5" href="/inteligenta_artificiala/mi_lab5.php">M.I. 5<br></a></li>
+						<li><a id="mi_lab6" href="/inteligenta_artificiala/mi_lab6.php">M.I. 6<br></a></li>
+						<li><a id="mi_lab7" href="/inteligenta_artificiala/mi_lab7.php">M.I. 7<br></a></li>
+						<li><a id="mi_lab9" href="/inteligenta_artificiala/mi_lab9.php">M.I. 9<br></a></li>
+					</ul>
+				</li>-->
+				<!--
+				<li>
+					<button class="opt_meniu" id="teme">Teme</button>
+					<ul>
+						<li><a id="tema1" href="/inteligenta_artificiala/tema1.php">Tema 1<br></a></li>
+						<li><a id="tema2" href="/inteligenta_artificiala/tema2.php">Tema 2<br></a></li>
+						<li><a id="tema3" href="/inteligenta_artificiala/tema3.php">Tema 3<br></a></li>
+						<li><a id="observatii_python" href="/inteligenta_artificiala/observatii_python.php">Observatii Python<br></a></li>
+					</ul>
+				</li>
+				-->
+				<li>
+					<a id="note" href="http://irinaciocan.ro/inteligenta_artificiala/note.php">Note<br></a>
+				</li>
+				<li>
+					<button class="opt_meniu" id="anexe" datadeschis="inchis">Anexe<img class="acces_submeniu" src="./Laboratoare inteligenta artificiala - Teme A__files/triunghi_alb_mic_b_jos.png" alt=""></button>
+					<ul>
+						<li><a id="cum-rezolvam-o-problema" href="http://irinaciocan.ro/inteligenta_artificiala/cum-rezolvam-o-problema.php">Cum rezolvam o problema?<br></a></li>
+						<li><a id="backup" href="http://irinaciocan.ro/biblioteca/backup.php?folder=inteligenta_artificiala">Backup<br></a></li>
+						<!--
+						<li><a id="debug" href="/inteligenta_artificiala/debug.php">Debug<br></a></li>
+						<li>
+							<a id="exemplu_tema" href="/inteligenta_artificiala/exemplu_tema.php">Exemplu tema</a>
+						</li>
+						<li>
+							<a id="modele_test_prolog" href="/inteligenta_artificiala/modele_test_prolog.php">Model test 1</a>
+						</li>
+						<li>
+							<a id="modele_test_algoritmi" href="/inteligenta_artificiala/modele_test_algoritmi.php">Model test 2</a>
+						</li>
+						<li>
+							<a id="interfata_grafica" href="/inteligenta_artificiala/interfata_grafica.php">Interfata</a>
+						</li>
+						-->
+					</ul>
+				</li>
+				<!--
+				<li>
+					<button class="opt_meniu" id="proiecte">Proiecte si exercitii</button>
+					<ul>
+						<li><a id="proiecte" href="/inteligenta_artificiala/proiecte.php">Proiecte JS</a></li>
+						<li><a id="exercitii_simple" href="/inteligenta_artificiala/exercitii_simple.php">Exercitii simple</a></li>
+						<li><a id="exercitii_pregatire_examen" href="/inteligenta_artificiala/exercitii_pregatire_examen.php">Exercitii-proiect</a></li>
+						<li><a id="exercitii_foarte_simple" href="/inteligenta_artificiala/exercitii_foarte_simple.php">Exercitii f. simple</a></li>
+						<li><a id="test_JS1" href="/inteligenta_artificiala/test_JS1.php">Test JS</a>
+						</li>
+					</ul>
+				</li>
+				-->	<!--
+
+	<li class="meniu_bord"><a id="seminar1" href="seminar1.php">Seminar 1</a></li>
+
+	<li  class="meniu_bord"><a id="bibliografie" href="bibliografie.php" style="color:red" title="pentru proiect!">Bibliografie</a></li>
+	<li><a id="exemplu_tema" href="exemplu_tema.php">Regulament teme</a></li>
+	<hr style="margin:0; padding:0; border:0; height:1px; color:grey; background-color:grey;"/>
+	<br/>-->
+
+			</ul>
+		</nav>
+	</header>
+<main><h5 class="def" title="A trecut deadline-ul">(Deadline: 19.01.2023 23:59:59)</h5>
+<p style="font-style:italic;color:grey;">Daca nu sunteti logati exercitiile nu se mai afiseaza.</p>
+<h2>Tema 1 - cautare informata - Comparație între tehnicile de căutare</h2>
+<section class="sectiune_teorie sectiune_laborator"><p><strong>Observatie:</strong> in cazul in care pentru un tip de mutare nu se precizeaza in mod clar costul, se va considera costul 1.</p>
+<p><strong>Observatie:</strong> Pe lângă program se va uploada și o documentație în format pdf cu informațiile cerute mai jos. Se poate face și în Google docs punând linkul către ea într-un comentariu pe primul rând al programului</p>
+
+<h3>Barem comun</h3>
+<p><b>Linkuri utile</b> </p>
+<ul>
+	<li><a href="https://repl.it/@IrinaCiocan/cautare-BFDFDFI-complet#main.py" target="_blank">https://repl.it/@IrinaCiocan/cautare-BFDFDFI-complet#main.py</a></li>
+	<li><a href="https://repl.it/@IrinaCiocan/uniform-cost-search#main.py" target="_blank">https://repl.it/@IrinaCiocan/uniform-cost-search#main.py</a></li>
+	<li><a href="https://repl.it/@IrinaCiocan/a-star#main.py" target="_blank">https://repl.it/@IrinaCiocan/a-star#main.py</a></li>
+	<li><a href="https://replit.com/@IrinaCiocan/a-star-optimizat#main.py" target="_blank">https://replit.com/@IrinaCiocan/a-star-optimizat#main.py</a></li>
+	<li><a href="https://replit.com/@IrinaCiocan/ida-star#main.py" target="_blank">https://replit.com/@IrinaCiocan/ida-star#main.py</a></li>
+	<li><a href="https://repl.it/@IrinaCiocan/problemablocurilor#main.py" target="_blank">https://repl.it/@IrinaCiocan/problemablocurilor#main.py</a> (E implementat cu BF si A*)</li>
+<li><a href="https://replit.com/@IrinaCiocan/8-puzzle#main.py" target="_blank">https://replit.com/@IrinaCiocan/8-puzzle#main.py</a></li>
+	<li><a href="https://repl.it/@IrinaCiocan/exemplu-afisare-timp-folosit" target="_blank">https://repl.it/@IrinaCiocan/exemplu-afisare-timp-folosit</a> (cum calculam timpul de executie a unei secvente de cod)</li>
+	<li><a href="https://repl.it/@IrinaCiocan/problema-canibalilor-si-misionarilor#main.py" target="_blank">https://repl.it/@IrinaCiocan/problema-canibalilor-si-misionarilor#main.py</a></li>	
+	<li><a href="https://repl.it/@IrinaCiocan/exemplu-iterare-prin-folder" target="_blank">https://repl.it/@IrinaCiocan/exemplu-iterare-prin-folder</a></li>
+	<li><a href="http://irinaciocan.ro/inteligenta_artificiala/python-comprehensions.php" target="_blank">http://irinaciocan.ro/inteligenta_artificiala/python-comprehensions.php</a> la secțiunea cu argumentele programului, respectiv timeout</li>
+	<li><a href="http://irinaciocan.ro/inteligenta_artificiala/cum-rezolvam-o-problema.php">http://irinaciocan.ro/inteligenta_artificiala/cum-rezolvam-o-problema.php</a> modul general de abordare a unei probleme</li>
+</ul>
+<p><b>Barem</b> (punctajul e dat in procentaje din punctajul maxim al temei; procentajul maxim este 100%):</p>
+<ol>
+	<li>(5%)Fișierele de input vor fi într-un folder a cărui cale va fi dată în linia de comanda. În linia de comandă se va da și calea pentru un folder de output în care programul va crea pentru fiecare fișier de input, fișierul sau fișierele cu rezultatele. Tot în linia de comandă se va da ca parametru și numărul de soluții de calculat (de exemplu, vrem primele NSOL=4 soluții returnate de fiecare algoritm). Ultimul parametru va fi timpul de timeout. Se va descrie în documentație forma în care se apelează programul, plus 1-2 exemple de apel.</li>
+	<li>(5%) Citirea din fisier + memorarea starii. Parsarea fișierului de input care respectă formatul cerut în enunț</li>
+	<li>(15%) Functia de generare a succesorilor </li>
+	<li>(5%) Calcularea costului pentru o mutare</li>
+	<li>(5%) Testarea ajungerii în starea scop (indicat ar fi printr-o funcție de testare a scopului). Atenție, acolo unde nu se precizează clar în fișierul de intrare o stare finală înseamnă că funcția de testare a scopului doar verifică niște condiții precizate în enunț. Nu se va rezolva generând toate stările finale posibile fiindca e ineficient, ci se va verifica daca o stare curentă se potrivește descrierii unei stări scop. </li>
+	<li>(15% = 2+5+5+3 ) 4 euristici:
+		<ul>
+			<li> (2%) banala</li>
+			<li> (5%+5%) doua euristici admisibile posibile (se va justifica la prezentare si in documentație de ce sunt admisibile) 
+			</li><li> (3%) o euristică neadmisibilă (se va da un exemplu prin care se demonstrează că nu e admisibilă). Atenție, euristica neadmisibilă trebuie să depindă de stare (să se calculeze în funcție de valori care descriu starea pentru care e calculată euristica).</li>
+		</ul>
+	</li>
+	<li>(10%) crearea a 4 fisiere de input cu urmatoarele proprietati: <ol class="lista_abc">
+		<li>un fisier de input care nu are solutii</li>
+		<li>un fisier de input care da o stare initiala care este si finala (daca acest lucru nu e realizabil pentru problema, aleasa, veti mentiona acest lucru, explicand si motivul).</li>
+		<li>un fisier de input care nu blochează pe niciun algoritm și să aibă ca soluții drumuri lungime micuță (ca să fie ușor de urmărit), să zicem de lungime maxim 20.</li>
+		<li>un fisier de input care să blocheze un algoritm la timeout, dar minim un alt algoritm să dea soluție (de exemplu se blochează DF-ul  dacă soluțiile sunt cât mai "în dreapta" în arborele de parcurgere)</li>
+		<li>dintre ultimele doua fisiere, cel putin un fisier sa dea drumul de cost minim pentru euristicile admisibile si un drum care nu e de cost minim pentru cea euristica neadmisibila </li>
+	</ol>
+	</li><li>(15%) Pentru cele NSOL drumuri(soluții) returnate de fiecare algoritm (unde NSOL e numarul de soluții dat în linia de comandă) se va afișa:
+		<ul>
+			<li>numărul de ordine al fiecărui nod din drum</li>
+			<li>lungimea drumului</li>
+			<li>costului drumului</li>
+			<li>timpul de găsire a unei soluții (<strong>atenție</strong>, pentru soluțiile de la a doua încolo timpul se consideră tot de la începutul execuției algoritmului și nu de la ultima soluție)</li>
+			<li>numărul maxim de noduri existente la un moment dat în memorie</li>
+			<li>numărul total de noduri calculate (totalul de succesori generati; atenție la DFI și IDA* se adună pentru fiecare iteratie chiar dacă se repetă generarea arborelui, nodurile se vor contoriza de fiecare dată afișându-se totalul pe toate iterațiile</li>
+			<li>între două soluții de va scrie un separator, sau soluțiile se vor scrie în fișiere diferite.</li>
+		</ul>
+		<p>Obținerea soluțiilor se va face cu ajutorul fiecăruia dintre algoritmii studiați: </p>
+		<ul>
+			<li><strong>Pentru studenții de la seria CTI problema se va rula cu algoritmii: BF, DF, DFI, UCS, A* (varianta care dă toate drumurile), A* optimizat (cu listele open și closed, care dă doar drumul de cost minim), IDA*.</strong> </li>
+			<li><strong>Pentru studenții din seriile Mate-Info și Informatică, problema se va rula cu algoritmii:  BF, DF, DFI, A* (varianta care dă toate drumurile), A* optimizat (cu listele open și closed, care dă doar drumul de cost minim), IDA*.</strong> </li>
+		</ul>	
+		Pentru toate variantele de A* (cel care oferă toate drumurile, cel optimizat pentru o singură soluție, și IDA*) se va rezolva problema cu fiecare dintre euristici. Fiecare din algoritmi va fi rulat cu timeout, si se va opri daca depășește acel timeout (necesar în special pentru fișierul fără soluții unde ajunge să facă tot arborele, sau pentru DF în cazul soluțiilor aflate foarte în dreapta în arborele de parcurgere).
+		</li>
+	<li>(5%) Afisarea in fisierele de output in formatul cerut </li>
+	<li>(5%+5%) Validări  și optimizari. Veți implementa elementele de mai jos care se potrivesc cu varianta de temă alocată vouă:
+		<ul>
+			<li> Validare: verificarea corectitudinii datelor de intrare</li>
+			<li> Validare: găsirea unui mod de a realiza din starea initială că problema nu are soluții. Validările și optimizările se vor descrie pe scurt în documentație.</li>
+			<li> Optimizare: găsirea unui mod de reprezentare a stării, cât mai eficient</li>
+			<li> Optimizare: găsirea unor condiții din care sa reiasă că o stare nu are cum sa contina in subarborele de succesori o stare finala deci nu mai merita expandata (nu are cum să se ajungă prin starea respectivă la o stare scop).</li>
+			<li> Optimizare: implementarea eficientă a algoritmilor cu care se rulează programul, folosind eventual module care oferă structuri de date performante.</li>
+		</ul>
+	</li>
+	<li>(5%) Comentarii pentru  clasele și funcțiile adăugate de voi în program (dacă folosiți scheletul de cod dat la laborator, nu e nevoie sa comentați și clasele existente). Comentariile pentru funcții trebuie să respecte un stil consacrat prin care se precizează tipul și rolurile parametrilor, căt și valoarea returnată (de exemplu, <a target="_blank" href="https://www.python.org/dev/peps/pep-0287/">reStructured text</a> sau <i><a target="_blank" href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google python docstrings</a></i>).</li>
+	
+	<li>(5%) Documentație cuprinzând explicarea euristicilor folosite. În cazul euristicilor admisibile, se va dovedi că sunt admisibile. În cazul euristicii neadmisibile, se va găsi un exemplu de stare dintr-un drum dat, pentru care h-ul estimat este mai mare decât h-ul real. Se va crea un tabel în documentație cuprinzând informațiile afișate pentru fiecare algoritm (lungimea și costul drumului, numărul maxim de noduri existente la un moment dat în memorie, numărul total de noduri). Pentru variantele de A* vor fi mai multe coloane în tabelul din documentație: câte o coloană pentru fiecare euristică. Tabelul va conține datele pentru minim 2 fișiere de input, printre care și fișierul de input care dă drum diferit pentru euristica neadmisibilă. În caz că nu se găsește cu euristica neadmisibilă un prim drum care să nu fie de cost minim, se acceptă și cazul în care cu euristica neadmisibilă se obțin drumurile în altă ordine decât crescătoare după cost, adică diferența să se vadă abia la drumul cu numărul K, K&gt;1). Se va realiza sub tabel o comparație între algoritmi și soluțiile returnate, pe baza datelor din tabel, precizând și care algoritm e mai eficient în funcție de situație. Se vor indica pe baza tabelului ce dezavantaje are fiecare algoritm. </li>
+	
+	<li><strong>Doar pentru studenții de la seria CTI (Bonus 10%) pentru implementarea Greedy și analizarea acestuia împreună cu ceilalți algoritmi.</strong></li>
+	<li><strong>Doar pentru studenții de la seria CTI (Bonus 10%) pentru fiecare dintre următoarele optimizări pentru cazul în care se cere o singură soluție (deci în program veți avea un if care verifică dacă numărul inițial de soluții cerut era 1):
+		<ol class="lista_abc">
+			<li>la BF să se returneze drumul imediat ce nodul scop a fost descoperit, și nu neapărat când ajunge primul în coadă</li>
+			<li>la UCS+A* (bonusul ar fi 10%+10% dacă se face pt ambele) să nu avem duplicate ale informației din noduri în coadă. În cazul în care  tocmai dorim să adăugăm un nod în coadă și vedem că există informația lui deja, păstram în coadă, dintre cele 2 noduri doar pe cel cu costul cel mai mic</li>
+		</ol>
+	</strong>
+	</li>
+	
+	
+	<li><strong>Bonus (5%) Dacă faceți mai multe euristici admisibile dar diferite ca idee (cu alt mod de abordare a calculării).</strong></li>
+	<li><strong>(Bonus 5%) implementare proprie (rescriere completă față de exemplele de la laborator) </strong></li>
+	<li><strong>(Bonus 15-20%) Adăugarea unei interfețe grafice care să simuleze drumul cu ajutorul unei animații (de exemplu, făcută în pygame).</strong></li>
+	
+
+</ol>
+<p><strong class="important">Tema <strong>nu</strong> se puncteaza fara prezentare.</strong> Se va da o nota pe prezentare de la 1 la 10 in functie de cat de bine a stiut studentul sa explice ce a facut. Punctajul temei se va inmulti cu nota_prezentare/10. Astfel, daca cineva stie sa explice doar jumatate din ce a facut, primeste jumatate din punctaj; daca nu stie nimic primeste 0.</p>
+<p><strong class="important">Temele copiate duc la anularea notei atat pentru cel care a dat tema cat si pentru cel care a copiat, iar numele studentilor cu aceasta problema vor fi comunicate profesorului titular de curs.</strong></p>
+<hr class="despartitor_tema"><hr class="despartitor_tema"><hr class="despartitor_tema">
+</section>
+<ol start="1" style="text-indent:0; font-weight:bold;"><section class="afis_exercitiu">
+				<form id="f53" action="http://irinaciocan.ro/inteligenta_artificiala/teme_a_star_mi.php" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="upload" id="upload" value="oac-oac">
+				<input type="hidden" name="upload_clasa" id="upload_clasa" value="laborator">
+				<input type="hidden" name="nr_clasa_up" id="nr_clasa_up" value="2001">
+				<input type="hidden" name="student" id="student" value="RobertSorete">
+
+				<div style="font-weight:normal">
+				<div class="exercitiu">
+				Identificator: <b>ex-cautare-informata-exemple-modificate</b><br>	
+	
+<hr class="despartitor_tema">
+<p>Pornind de la programul problemei blocurilor scrieti un program asemanator in care se considera ca fiecare bloc contine un interval inchis [a,b].</p>
+<p><b>Mutarea blocurilor</b> se face cu urmatoarele restrictii:</p>
+<ul>
+	<li>Putem muta un bloc peste alt bloc doar daca intervalele lor se intersecteaza.</li>
+	<li>O exceptie de la regula este ca o stiva sa nu contina doua blocuri cu intervale identice (deci nu putem muta blocul, dacă pe stivă mai există un bloc cu același interval.</li>
+</ul>
+<p><b>Costul</b> unei mutări este dat de lungimea intervalului (pentru [a,b] costul e b-a).</p>
+<p>O stare e considerata scop daca pentru toate stivele din configuratie e indeplinita conditia (pentru orice bloc din fiecare stiva): intervalul blocului de mai sus este inclus strict in intervalul blocului imediat de sub el.</p>
+<p>Deci pot fi mai multe stari finale posibile pentru aceeasi configuratie initiala si testarea atingerii scopului trebuie facuta prin verificarea conditiei, NU prin enumerarea posibilitatilor de nod scop.</p>
+
+<p>Exemple de stari initiale (voi va veti crea altele, conform baremului):</p>
+<figure>
+<img class="w200" src="./Laboratoare inteligenta artificiala - Teme A__files/pb-blocuri-intervale(initiala).png" alt="configuratie initiala">
+</figure>
+<figure>
+<img class="w200" src="./Laboratoare inteligenta artificiala - Teme A__files/pb-blocuri-intervale(initiala2).png" alt="configuratie initiala 2">
+</figure>
+<p>Pentru prima stare initiala, o mutare valida e cea de mai jos ([4,7] s-a mutat peste [5,8]), prin aceasta mutare s-a ajuns chiar la o stare finala (pe fiecare stiva intervalul de deasupra e inclus strict in intervalul de dedesubt).</p>
+
+<figure>
+<img class="w200" src="./Laboratoare inteligenta artificiala - Teme A__files/pb-blocuri-intervale(mutare).png" alt="mutare">
+</figure>
+<p>Un exemplu de mutare invalida: ([1,2] nu e inclus in [4,8]):</p>
+<figure>
+<img class="w200" src="./Laboratoare inteligenta artificiala - Teme A__files/pb-blocuri-intervale(mutare-invalida).png" alt="mutare invalida">
+</figure>
+
+
+
+
+<!------------------------- input --------------------------->
+
+<b>Fisierul de intrare</b> va conține starea inițială (stivele cu blocurile). O stare în fișierul de input se va reprezenta astfel:<p></p>
+<ul>
+	<li>fiecare stivă pe câte un rând. Se consideră că baza stivei e la stânga și vârful stivei e la dreapta.</li>
+	<li>blocurile de pe o stivă se vor reprezenta prin: [a1,b1][a2,b2]...[an,bn] (scrierea clasică a unui interval închis)</li>
+	<li>informația dintr-un bloc va fi chiar intervalul corespunzător</li>
+	<li>Stivele vide se evidențiază prin "0"</li>
+</ul>
+
+
+<p>
+De exemplu, pentru starea inițială:</p>
+<figure>
+<img class="w200" src="./Laboratoare inteligenta artificiala - Teme A__files/pb-blocuri-intervale(initiala-stiva-vida).png" alt="configuratie initiala cu stivă vidă">
+</figure>
+<p>
+fișierul de intrare ar fi:
+<samp class="output">
+[3,5][2,3][1,4]<br>
+[5,9][4,8]<br>
+0<br>
+[1,8][2,4]<br>
+</samp>
+</p>
+
+
+
+
+
+
+
+<!------------------------- output --------------------------->
+<p><b>Model fișier output.</b> O stare în fișierul de output se va reprezenta afișând stivele de sus în jos, toate aliniate la bază. Afișarea unei configurații va avea un număr de rânduri egal cu înălțimea celei mai înalte stive. Dacă o stivă nu ajunge pănă la un anumit nivel în locul în care trebuia afișat blocul ei se vor pune spații (deci, dacă e cazul într-o stare finală, pentru stivă vidă vom avea spațiu începând cu cel mai de jos nivel). Pentru un bloc pe stivă se va afișa informația lui în formatul [a,b]. Între două stive se va afișa o coloană de spații. Toate blocurile dintr-o stivă încep de la aceeași coloană în zona de afișare. Sub fiecare configurație se va afișa o linie de simboluri "-"(minus) care începe de sub prima stivă și se termină la ultima.</p>
+<p>În afișarea drumului, configurațiile (nodurile) apar în ordine cronologică, numerotate (cu indice între 1 si ND, unde ND e numărul de noduri din drum). Se afișează pe o linie separată indicele și dedesubt configurația corespunzătoare.</p>
+<p>Între două soluții se va afișa un separator, de exemplu "##########################". </p>
+<p>De exemplu, pentru configurația de mai jos, dacă ar fi în fișierul de output
+</p><figure>
+<img class="w200" src="./Laboratoare inteligenta artificiala - Teme A__files/pb-blocuri-intervale(finala).png" alt="configuratie finala">
+</figure>
+presupunând ca e al 7-lea nod într-un drum, am avea:
+<samp class="output">
+7)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2,3]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2,4] [4,8]<br>
+[3,5] [5,9] [1,4] [1,8]<br>
+-----------------------
+</samp>
+
+<hr class="despartitor_tema">
+<div class="punctaj"><p><b>Punctaj:0.7 </b></p>
+</div>
+				
+				<div style="background-color:#eae6f8 ; border: 1px dashed #67d3ea"><b>Upload:</b><p style="font-weight:bold; color:red">Uploadul a fost blocat</p><br><b><i>Fisiere uploadate:</i></b> 
+<b>Data ultimului upload:19.01.2023 23:59:51.</b> <p>Punctaj fara penalizare: 0</p><br>
+						<div id="fis_up_53_0">
+<img src="./Laboratoare inteligenta artificiala - Teme A__files/nu.png" style="width:10px;height:auto; cursor:pointer" onclick="sterge_fis(&#39;inteligenta_artificiala&#39;,&#39;508&#39;,&#39;53&#39;,&#39;fis_up_53_0&#39;)">
+<a href="http://irinaciocan.ro/inteligenta_artificiala/afis_fis.php?fisier=ex-cautare-informata-exemple-modificate.txt&amp;idfu=508" target="_blank">
+						
+Problema blocurilor.pdf</a></div>
+
+						<div id="fis_up_53_1">
+<img src="./Laboratoare inteligenta artificiala - Teme A__files/nu.png" style="width:10px;height:auto; cursor:pointer" onclick="sterge_fis(&#39;inteligenta_artificiala&#39;,&#39;507&#39;,&#39;53&#39;,&#39;fis_up_53_1&#39;)">
+<a href="http://irinaciocan.ro/inteligenta_artificiala/afis_fis.php?fisier=ex-cautare-informata-exemple-modificate.txt&amp;idfu=507" target="_blank">
+						
+main.py</a></div>
+
+				  
+			   </div>
+
+
+			</div></div></form><br></section></ol>
+
+</main><script>
+		function returnCommentSymbol(language = "javascript") {
+			const languageObject = {
+				bat: "@REM",
+				c: "//",
+				csharp: "//",
+				cpp: "//",
+				closure: ";;",
+				coffeescript: "#",
+				dockercompose: "#",
+				css: "/*DELIMITER*/",
+				"cuda-cpp": "//",
+				dart: "//",
+				diff: "#",
+				dockerfile: "#",
+				fsharp: "//",
+				"git-commit": "//",
+				"git-rebase": "#",
+				go: "//",
+				groovy: "//",
+				handlebars: "{{!--DELIMITER--}}",
+				hlsl: "//",
+				html: "<!--DELIMITER-->",
+				ignore: "#",
+				ini: ";",
+				java: "//",
+				javascript: "//",
+				javascriptreact: "//",
+				json: "//",
+				jsonc: "//",
+				julia: "#",
+				latex: "%",
+				less: "//",
+				lua: "--",
+				makefile: "#",
+				markdown: "<!--DELIMITER-->",
+				"objective-c": "//",
+				"objective-cpp": "//",
+				perl: "#",
+				perl6: "#",
+				php: "<!--DELIMITER-->",
+				powershell: "#",
+				properties: ";",
+				jade: "//-",
+				python: "#",
+				r: "#",
+				razor: "<!--DELIMITER-->",
+				restructuredtext: "..",
+				ruby: "#",
+				rust: "//",
+				scss: "//",
+				shaderlab: "//",
+				shellscript: "#",
+				sql: "--",
+				svg: "<!--DELIMITER-->",
+				swift: "//",
+				tex: "%",
+				typescript: "//",
+				typescriptreact: "//",
+				vb: "'",
+				xml: "<!--DELIMITER-->",
+				xsl: "<!--DELIMITER-->",
+				yaml: "#"
+			}
+			return languageObject[language].split("DELIMITER")
+		}
+		var savedChPos = 0
+		var returnedSuggestion = ''
+		let editor, doc, cursor, line, pos
+		pos = {line: 0, ch: 0}
+		var suggestionsStatus = false
+		var docLang = "python"
+		var suggestionDisplayed = false
+		var isReturningSuggestion = false
+		document.addEventListener("keydown", (event) => {
+		setTimeout(()=>{
+			editor = event.target.closest('.CodeMirror');
+			if (editor){
+				const codeEditor = editor.CodeMirror
+				if(!editor.classList.contains("added-tab-function")){
+					editor.classList.add("added-tab-function")
+					codeEditor.removeKeyMap("Tab")
+					codeEditor.setOption("extraKeys", {Tab: (cm)=>{
+
+						if(returnedSuggestion){
+							acceptTab(returnedSuggestion)
+						}
+						else{
+							cm.execCommand("defaultTab")
+						}
+					}})
+				}
+				doc = editor.CodeMirror.getDoc()
+				cursor = doc.getCursor()
+				line = doc.getLine(cursor.line)
+				pos = {line: cursor.line, ch: line.length}
+
+				if(cursor.ch > 0){
+					savedChPos = cursor.ch
+				}
+
+				const fileLang = doc.getMode().name
+				docLang = fileLang
+				const commentSymbol = returnCommentSymbol(fileLang)
+				if (event.key == "?"){
+					var lastLine = line
+					lastLine = lastLine.slice(0, savedChPos - 1)
+
+					if(lastLine.trim().startsWith(commentSymbol[0])){
+						lastLine += " "+fileLang
+						lastLine = lastLine.split(commentSymbol[0])[1]
+						window.postMessage({source: 'getQuery', payload: { data: lastLine } } )
+						isReturningSuggestion = true
+						displayGrey("\nBlackbox loading...")
+					}
+				}else if(event.key === "Enter" && suggestionsStatus && !isReturningSuggestion){
+					var query = doc.getRange({ line: Math.max(0,cursor.line-10), ch: 0 }, { line: cursor.line, ch: line.length })
+					window.postMessage({source: 'getSuggestion', payload: { data: query, language: docLang } } )
+					displayGrey("Blackbox loading...")
+				}else if(event.key === "ArrowRight" && returnedSuggestion){
+					acceptTab(returnedSuggestion)
+				}else if(event.key === "Enter" && isReturningSuggestion){
+					displayGrey("\nBlackbox loading...")
+				}else if(event.key === "Escape"){
+					displayGrey("")
+				}
+			}
+		}, 0)
+		})
+
+		function acceptTab(text){
+		if (suggestionDisplayed){
+			displayGrey("")
+			doc.replaceRange(text, pos)
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		}
+		}
+		function acceptSuggestion(text){
+			displayGrey("")
+			doc.replaceRange(text, pos)
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		}
+		function displayGrey(text){
+			if(!text){
+				document.querySelector(".blackbox-suggestion").remove()
+				return
+			}
+			var el = document.querySelector(".blackbox-suggestion")
+			if(!el){
+				el = document.createElement('span')
+				el.classList.add("blackbox-suggestion")
+				el.style = 'color:grey'
+				el.innerText = text
+			}
+			else{
+				el.innerText = text
+			}
+			
+			var lineIndex = pos.line;
+			editor.getElementsByClassName('CodeMirror-line')[lineIndex].appendChild(el)
+		}
+		function updateSuggestionStatus(s){
+			suggestionDisplayed = s
+			window.postMessage({source: 'updateSuggestionStatus', status: suggestionDisplayed, suggestion: returnedSuggestion})
+		}
+		window.addEventListener('message', (event)=>{
+		if (event.source !== window ) return
+		if (event.data.source == 'return'){
+			isReturningSuggestion = false
+			const formattedCode = formatCode(event.data.payload.data)
+			returnedSuggestion = formattedCode
+			displayGrey(formattedCode)
+			updateSuggestionStatus(true)
+		}
+		if(event.data.source == 'suggestReturn'){
+			returnedSuggestion = event.data.payload.data
+			displayGrey(event.data.payload.data)
+			updateSuggestionStatus(true)
+		}
+		if(event.data.source == 'suggestionsStatus'){
+			suggestionsStatus = event.data.payload.enabled
+		}
+		if(event.data.source == 'acceptSuggestion'){
+			
+			acceptSuggestion(event.data.suggestion)
+		}
+		})
+		document.addEventListener("keyup", function(){
+			returnedSuggestion = ""
+			updateSuggestionStatus(false)
+		})
+		function formatCode(data) {
+			if (Array.isArray(data)) {
+				var finalCode = ""
+				var pairs = []
+		
+				const commentSymbol = returnCommentSymbol(docLang)
+				data.forEach((codeArr, idx) => {
+					const code = codeArr[0]
+					var desc = codeArr[1]
+					const descArr = desc.split("\n")
+					var finalDesc = ""
+					descArr.forEach((descLine, idx) => {
+						const whiteSpace = descLine.search(/\S/)
+						if (commentSymbol.length < 2 || idx === 0) {
+							finalDesc += insert(descLine, whiteSpace, commentSymbol[0])
+						}
+						if (commentSymbol.length > 1 && idx === descArr.length - 1) {
+							finalDesc = finalDesc + commentSymbol[1] + "\n"
+						}
+					})
+		
+					finalCode += finalDesc + "\n\n" + code
+					pairs.push(finalCode)
+				})
+				return "\n"+pairs.join("\n")
+			}
+		
+			return "\n"+data
+		}
+		
+		function insert(str, index, value) {
+			return str.substr(0, index) + value + str.substr(index)
+		}
+	</script></body></html>

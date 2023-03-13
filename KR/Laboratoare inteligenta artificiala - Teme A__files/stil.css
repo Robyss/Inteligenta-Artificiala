@@ -1,0 +1,1220 @@
+/* pentru diversele elemente in general*/
+
+html{
+	font-size:14px;
+	font-family: "Open Sans", Arial, Helvetica, sans-serif
+}
+body{
+	min-width:300px;
+}
+
+*{
+	margin:0;
+	padding:0;
+	text-indent:0;
+	border:0;
+	background-color:inherit;
+	color:inherit;
+	font-size:1em;
+}
+
+main a{
+	color:blue;
+	
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	-ms-word-break: break-all;
+	word-break: break-all;
+
+}
+
+button:focus
+{
+	outline:0;
+}
+
+ul,ol{
+	padding-left:3rem;
+}
+
+main p,main ul,main ol,samp.output,div.cod,code.cod{
+	margin-bottom:0.4em;
+}
+br.despartitor{
+	font-size:0;
+}
+
+
+.indicatie{
+	color:gray;
+	font-style:italic;
+}
+
+main h1,main h2,main h3,main h4,main h5,main h6{
+	margin-top:1.5em;
+	margin-bottom:1em;
+}
+main h2{
+	font-size:1.5em;
+}
+main h3{
+	font-size:1.4em;
+}
+main h4{
+	font-size:1.3em;
+}
+main h5{
+	font-size:1.2em;
+}
+main h6{
+	font-size:1.1em;
+}
+main img{
+	max-width:100%;
+	height:auto;
+}
+
+main p, main li{
+	margin-bottom:0.4em;
+}
+
+table
+{
+	border-width:1px;
+	border-style:solid;
+	border-color:black;
+	empty-cells:show;
+	border-collapse:separate;
+}
+
+td, th{
+	border-width:1px;
+	border-style:solid;
+	border-color:black;
+	padding:0.5em;
+}
+
+div.spatiere{
+	height:1em;
+}
+
+dd{
+	padding-left:2em;
+}
+
+svg.exemplu_svg{
+	border:1px solid black;
+}
+
+iframe.iframe_exemplu{
+	width:100%;
+	height:100px;
+	display:block;
+}
+
+video{
+	width:50%;
+	max-width:320px;
+	height:auto;
+}
+
+
+
+/* ------------------------------------------meniu derulant orizontal ----------------------------------------------------*/
+nav#meniu_sus{
+	width:100%;
+	background:#274d8a; /*#60A1D0;*/
+
+	position:absolute;
+	z-index:10;
+}
+input, textarea, button, select{
+	border:2px inset skyblue;
+	border-radius:5px;
+}
+
+input[type=submit], button{
+	padding-left:1em;
+	padding-right:1em;
+	padding-top:0.3em;
+	padding-bottom:0.3em;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4f5fc+0,bfe8f9+37,9fd8ef+55,99e0ff+100 */
+	background: #e4f5fc; /* Old browsers */
+	background: -moz-linear-gradient(top,  #e4f5fc 0%, #bfe8f9 37%, #9fd8ef 55%, #99e0ff 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #e4f5fc 0%,#bfe8f9 37%,#9fd8ef 55%,#99e0ff 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #e4f5fc 0%,#bfe8f9 37%,#9fd8ef 55%,#99e0ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f5fc', endColorstr='#99e0ff',GradientType=0 ); /* IE6-9 */
+
+}
+
+/*ca sa elimin spatille care apareau intre randurile de butoane */
+nav#meniu_sus ul.meniu_principal, nav#meniu_sus ul.meniu_principal ul{
+	font-size:0;
+	line-height:0;
+	margin:0;
+	padding:0;
+	text-indent:0;
+}
+
+nav#meniu_sus ul.meniu_principal li{
+	height:2.2rem;
+	line-height:2.2rem;
+	font-size:1.1rem;
+	display:inline-block;
+	color:white;
+	
+	cursor:pointer;
+
+}
+
+nav#meniu_sus ul.meniu_principal>li>ul{
+	background:#4492C9;
+	display:none;
+	position:absolute;
+	left:0;
+	z-index:2;
+	width:100%;
+}		
+	
+nav#meniu_sus ul.meniu_principal a{
+	
+	color:white;
+	text-decoration:none;
+	display:block;
+	height:100%;
+	padding-left:1.4rem;
+	padding-right:1.4rem;
+}
+
+nav#meniu_sus ul.meniu_principal>li:hover{
+	background:#4492C9;
+}
+
+
+
+nav#meniu_sus ul.meniu_principal>li>ul>li:hover{
+	background:#47C4ED;
+}
+
+
+nav#meniu_sus button.opt_meniu{
+	background-color:transparent;
+}
+
+nav#meniu_sus ul.meniu_principal li button{
+	border:0;
+	background:transparent;
+	padding:0;
+	height:100%;
+	padding-left:1.4rem;
+	padding-right:1.4rem;
+}
+
+.acces_submeniu{
+	/*border:1px solid white;
+	font-size:0.5em;*/
+	width:0.5em;
+	height:0.5em;
+	line-height:1em;
+	padding-left:0.2em;
+	padding-right:0.2em;
+	/*text-align:center;
+	display:inline-block;
+	vertical-align:middle;*/
+	
+}
+
+.triunghi_mic{
+	width:0.5em;
+	height:0.5em;
+	line-height:1em;
+	padding-left:0.2em;
+	padding-right:0.2em;
+}
+
+nav#meniu_sus ul.meniu_principal li .optiune_importanta{
+	/*color:yellow;*/
+	text-shadow: 0 0 0.1em yellow;
+	
+}
+
+nav #regulament{
+	text-shadow:0px 0px 0.1em red;
+}
+
+/* ----------------------------------------------------------------------- */
+
+/* formular login */
+div#nume_login
+{
+	position:absolute;
+	width:170px;
+	font-size:0.8em;
+	color:white;
+	top:0px;
+	left:0px;
+	border-right:1px solid black;
+	height:100%;
+	margin:0;
+	padding-left:0.5em;
+	padding-right:1em;
+	padding-top:1em;
+	box-sizing:border-box;
+	
+}
+div#nume_login div.col1{
+	width:auto;
+	
+}
+div#nume_login div.col2{
+	width:auto;
+	
+}
+
+div#nume_login div.labelInput label{
+	font-size:1em; 
+	display:block;
+	float:left;
+	margin:0;
+	padding:0;	
+	width:25%;
+	text-align:left;
+	padding-right:1em;
+}
+div#nume_login div.labelInput input{
+	font-size:0.9em; 
+	width:60%;
+	display:block;
+	float:left;
+	margin:0;
+	padding:0;
+	padding-left:0.2em;
+	text-align:left;
+	height:1.1em;
+	vertical-align:middle;
+	color:black;
+	background-color:white;
+}
+div#nume_login div.labelInput{
+	width:100%;
+	float:left;
+	padding-bottom:0.3rem;
+}
+
+div#nume_login *{
+	color:#222;
+	font-weight:bold;
+}
+
+div#nume_login .alerta{
+	color:darkgrey;
+	font-weight:bold;
+	margin-right:0.5em;
+	
+	margin-bottom:0.2em;
+}
+div#nume_login .alerta>.user{
+	color:grey;
+	/*text-shadow: 0 0 0.05em rgba(0,0,0,1),0 0 0.05em rgba(0,0,0,1),0 0 0.05em rgba(0,0,0,1);*/
+	font-weight:900;
+}
+div#nume_login form{
+	width:100%;
+}
+
+div#nume_login a{
+	color:grey;
+}
+div#nume_login>p{
+	margin-bottom:0.3em;
+}
+
+div#nume_login form input[type=submit]{
+	border:0.1em solid darkgrey;
+	background:lightgrey;
+	padding-left:0.5em;
+	padding-right:0.5em;
+	padding-top:0.1em;
+	padding-bottom:0.1em;
+	border-radius:4px;
+	transition: all 0.2s linear;
+	font-size:1em;
+	vertical-align:middle;
+	margin-bottom:0.2em;
+}
+div#nume_login form input[type=submit]:hover{
+	border:0.1em solid white;
+	background:#EEE;
+	transform:translateY(2%);
+	color:black;
+	
+}
+
+/* ----------------------------------------------------------------------- */
+/* footer */
+p#copyright{
+
+	background:grey;
+	text-align:center
+	
+}
+/* bara fixa de jos */
+div.bara_jos
+{
+	background:#063E66;
+	height:1.5em;
+	line-height:1.5em;
+	color:white;
+	z-index:100;
+}
+div.bara_jos a{
+	margin-right:2em;
+}
+footer{
+	position:fixed;
+	width:100%;
+	bottom:0;
+	
+}
+/* ------------------------------------------------------------------------ */
+/* formatare continut efectiv */
+header{
+	position:relative;
+	/*background: #063E66;*/
+
+}
+header.principal>h1{
+	font-size:30px;
+	font-size:2.5rem;
+	text-align:center;
+	border-bottom:1px solid black;
+	/*background: #063E66;*/
+	background-color:white;
+	background-image: linear-gradient(grey, white 15%, white);
+	color:white;
+	text-shadow: 0 0 0.2rem rgba(0,0,0,0.9),0 0 0.1rem rgba(0,0,0,1),0 0 0.1rem rgba(0,0,0,1);
+	height:7rem;
+	line-height:7rem;
+	margin-top:0;
+	margin-bottom:0;
+}
+main{
+	padding-left:5%;
+	padding-right:5%;
+	padding-top:4em;
+	text-align:justify;
+	font-size:1em;
+	display:block;
+	margin-bottom:4em;
+}
+
+body button.selecteaza_textul{
+	border:1px solid #b5dce7;
+	border-bottom-style:dashed;
+	top:2px;
+	position:relative;
+	background-color:#f7fcfd;
+	padding-left:0.5em;
+	padding-right:0.5em;
+	padding-top:0.2em;
+	padding-bottom:0.2em;
+	cursor:pointer;
+	border-radius: 0.5em 0.5em 0% 0%;
+	font-size:0.8em;
+	font-style:italic;
+}
+
+.subcapitol{
+}
+
+.subsubcapitol{
+}
+
+.highlight{
+	background:yellow;
+}
+
+img.general{
+	max-width:75%;
+	height:auto;
+	
+}
+img.w200{
+	max-width:200px;
+	min-width:70px;
+	width:100%;
+	height:auto;
+	
+}
+
+img.w250{
+	max-width:250px;
+	min-width:100px;
+	width:100%;
+	height:auto;
+	
+}
+
+img.w400{
+	max-width:400px;
+	min-width:100px;
+	width:100%;
+	height:auto;
+	
+}
+
+
+img.w500{
+	max-width:500px;
+	min-width:100px;
+	width:100%;
+	height:auto;
+	
+}
+
+.flexbox{
+	display:flex;
+	flex-wrap:wrap;
+}
+
+.flexbox>*{
+	margin-left:2em;
+	margin-bottom:2em;
+}
+
+div.usr_online /*divul unde apar scrisi cei online*/
+{
+padding-left:5px;
+font-size:0.8rem;
+}
+
+
+
+div.pad
+{
+margin-right:20px;
+padding-right:20px;
+background-color:#99CCFF;
+
+}
+
+
+form.forum
+{
+width:700px;
+background-color:#aaa1ec;
+padding:5px;
+}
+
+
+
+input.inviztb
+{
+border-width:0px;
+background-color:white;
+border-color:white;
+}
+
+
+body.lab
+{
+background-color:#99CCFF;
+}
+
+body.punctaj
+{
+background-color:#99CCFF;
+width:2000px;
+}
+
+hr.test
+{
+height: 5px;
+width: 100%;
+}
+
+hr.raspt
+{
+height: 1px;
+text-align: left;
+margin: 0 auto 0 0; 
+background-color: #5dc7e5;
+color: #5dc7e5;
+width: 50%;
+}
+
+div.tabel_punctaj
+{
+border-style:solid;
+border-width:3px;
+border-color:#E8E8E8;
+margin-left:100px;
+margin-right:20px;
+padding-left:10px;
+padding-right:20px;
+width:1500px;
+background-color:#FFFFFF;
+}
+
+
+div.tabel_lab
+{
+border-style:solid;
+border-width:3px;
+border-color:#E8E8E8;
+margin-left:100px;
+margin-right:20px;
+padding-left:10px;
+padding-right:20px;
+background-color:#FFFFFF;
+min-width:790px;
+}
+
+div.margine
+{
+margin-left:20px;
+margin-right:20px;
+padding-left:30px;
+padding-right:20px;
+}
+
+table.lab
+{
+border-style:hidden;
+}
+
+li.nealocat
+{
+font-weight:bold;
+}
+
+li.prbold
+{
+font-weight:bold;
+}
+
+li.alocat
+{
+font-style:italic;
+color:grey
+}
+
+div.noutati
+{
+text-align:center;
+
+}
+
+
+.rosu
+{
+color:red;
+}
+
+
+.verde
+{
+color:green;
+background-color:#FCF0CD;
+}
+
+.nota{
+color:grey;
+}
+
+table.noutati
+{
+vertical-align:middle;
+margin-left:auto;
+margin-right:auto;
+margin-top:auto;
+margin-bottom:auto;
+text-align:left;
+border-width:3px;
+border-color:red;
+background-color:#FCF0CD;
+border-style:dashed;
+}
+
+
+td.nume
+{
+font-weight:bold;
+}
+
+td.prez_laborator
+{
+text-align:center;
+font-size:40px;
+color:#0077DD;
+}
+
+td.prez_seminar
+{
+text-align:center;
+font-size:40px;
+color:#0000AA;
+}
+
+td.activ_seminar
+{
+text-align:center;
+font-size:40px;
+color:#E77016;
+}
+
+td.lucrare_seminar
+{
+text-align:center;
+font-size:40px;
+color:#CCCC00;
+}
+
+
+td.tema_laborator
+{
+text-align:center;
+font-size:40px;
+color:#FF00FF;
+}
+
+td.activ_laborator
+{
+text-align:center;
+font-size:40px;
+color:#009900;
+}
+
+
+td.idei_speciale
+{
+text-align:center;
+font-size:40px;
+color:#FF0044;
+}
+
+
+.cod
+{
+display:block;
+border-style:solid;
+border-width:1px;
+border-color:#b5dce7;
+background-color:#f7fcfd;
+overflow:auto;
+font-family:"Lucida Console", Monaco, monospace;
+padding:0.3em;
+white-space:nowrap;
+}
+
+
+.cod_pre
+{
+display:block;
+border-style:solid;
+border-width:1px;
+border-color:#b5dce7;
+background-color:#f7fcfd;
+overflow:auto;
+font-family:"Lucida Console", Monaco, monospace;
+font-size:10px;
+white-space:pre;
+}
+
+.cod_inline
+{
+display:inline;
+border-style:solid;
+border-width:1px;
+border-color:#b5dce7;
+background-color:#f7fcfd;
+overflow:auto;
+font-family:"Lucida Console", Monaco, monospace;
+font-size:10px;
+white-space:nowrap;
+}
+
+
+
+.output
+{
+display:block;
+border-style:solid;
+border-width:1px;
+border-color:#717885;
+background-color:#EBEBEB;
+overflow:auto;
+font-family:"Lucida Console", Monaco, monospace;
+font-size:10px;
+white-space:nowrap;
+padding:0.3em;
+}
+
+.exemple_trace{
+color:green;
+}
+
+table.punctaj
+{
+border-width:1px;
+border-style:solid;
+border-color:black;
+empty-cells:show;
+border-collapse:separate;
+}
+
+
+ol.lista_abc{
+	list-style-type:lower-alpha;
+}
+img.bord_img{
+	border:1px solid black;
+}
+.margin_bottom_1em{
+	margin-bottom:1em;
+}
+/* --------------------- afisare exercitii -------------------*/
+
+ol.subpuncte_a{
+list-style-type:lower-alpha;
+}
+
+
+div.exercitii
+{
+border-style:solid;
+border-width:3px;
+border-color:#E8E8E8;
+}
+
+div.exercitiu
+{
+border-style:solid;
+border-width:3px;
+border-color:#E8E8E8;
+padding:0.2em;
+border-radius:5px;
+box-shadow:0px 3px 4px grey;
+}
+
+
+div.punctaj
+{
+border:1px solid #f1f1f1;
+background:#f7f7f7;
+border-top-left-radius:0.5em;
+border-top-right-radius:0.5em;
+padding-top:0.2em;
+}
+
+div.punctaj p{
+margin-bottom:0.2em;
+}
+
+.exercitiu_obligatoriu{
+font-weight:bold;
+color:red;
+}
+
+.exercitiu_recomandat{
+font-weight:bold;
+color:#00CC00;
+}
+
+.exercitiu_laborator{
+font-weight:bold;
+color:navy;
+}
+
+body{
+counter-reset: nr_exercitiu;
+}
+
+section.afis_exercitiu::before{
+	counter-increment:nr_exercitiu 1;
+	content: counter(nr_exercitiu);
+	display:inline-block;
+	border:1px solid #e1e1e1;
+	background: #f1f1f1;
+	border-top-left-radius:0.5em;
+	border-top-right-radius:0.5em;
+	padding:0.3em;
+	padding-left:0.5em;
+	padding-right:0.5em;
+	margin-left:5px;
+}
+
+section.afis_exercitiu{
+	text-indent:0px; 
+	padding-left:0px; 
+	margin-left:0px;
+	font-weight:normal;
+}
+.exercitiu_mi{
+font-weight:bold;
+color:#4dcddd;
+}
+
+
+.exercitiu_bonus{
+font-weight:bold;
+color:purple;
+}
+
+/* --------------------stiluri chat---------------------------*/
+.chat_id_profesor
+{
+color:red;
+font-weight:bold;
+}
+
+.chat_id_admin
+{
+color:navy;
+font-weight:bold;
+}
+
+.chat_id_general
+{
+font-weight:bold;
+}
+
+div.spatiuchat
+{
+border-color:#000099;
+border-width:1px;
+border-style:solid;
+background-color:white;
+height:400px;
+width:250px;
+text-align:left;
+overflow:auto;
+}
+
+/* ----------------------stiluri generale---------------------*/
+
+.ascuns
+{
+visibility:hidden;
+}
+
+.mic
+{
+font-size:10px;
+}
+
+.def, .eroare, .important
+{
+color:red;
+font-weight:bold;
+}
+
+.animatie_alerta{
+	animation:alerta 2s linear alternate infinite;
+}
+@keyframes alerta{
+	from{
+		color:red;
+	}
+	to{
+		color:yellow;
+	}
+}
+
+.aldin{
+	font-weight:bold;
+}
+
+.supraliniat
+{
+  text-decoration:overline;
+}
+
+.copiat
+{
+color:red;
+font-weight:bold;
+}
+
+.aliniat
+{
+padding-left:20px;
+}
+
+.tabel_obisnuit td
+{
+border: 2px ridge grey;
+padding-left:5%;
+padding-right:5%;
+padding-top:2%;
+padding-bottom:2%;
+}
+
+
+.tabel_obisnuit
+{
+width:40%;
+border-spacing:0;
+}
+
+
+
+table
+{
+margin-bottom:0.5em;
+}
+
+table.laborator{
+	border-spacing:0;
+}
+
+section.sectiune_laborator{
+	border:1px solid lightgray;
+	border-radius:5px;
+	padding:0.5em;
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+}
+
+section.optional{
+	background:lightgray;
+}
+section.optional>h2:after,section.optional>h3:after,section.optional>h4:after,section.optional>h5:after,section.optional>h6:after{
+	content: "- sectiune optionala";
+}
+
+
+dl dt{
+	font-weight:bold;
+}
+dl dd{
+	margin-bottom:1em;
+}
+
+/*--------------------forum------------------------------*/
+
+.grup_categ_vechi
+{
+background:lightblue;
+color:navy;
+font-size:18px;
+font-weight:bold;
+padding:5px;
+text-indent:10px;
+-moz-border-radius: 15px;
+border-radius: 15px;
+}
+th.th_grup_categ
+{
+padding:0px;
+margin:0px;
+border:none;
+border-bottom:1px solid #dcdcdc;
+}
+
+div.grup_categ{
+	-moz-box-shadow:inset 0px 5px 5px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 5px 5px 0px #ffffff;
+	box-shadow:inset 0px 5px 5px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #63ceff), color-stop(1, #5961b3) );
+	background:-moz-linear-gradient( center top, #63ceff 5%, #5961b3 100% );
+	background-color:#63ceff;
+	-webkit-border-top-left-radius:12px;
+	-moz-border-radius-topleft:12px;
+	border-top-left-radius:12px;
+	-webkit-border-top-right-radius:12px;
+	-moz-border-radius-topright:12px;
+	border-top-right-radius:12px;
+	/*-webkit-border-bottom-right-radius:12px;
+	-moz-border-radius-bottomright:12px;
+	border-bottom-right-radius:12px;
+	-webkit-border-bottom-left-radius:12px;
+	-moz-border-radius-bottomleft:12px;
+	border-bottom-left-radius:12px;*/
+	text-indent:0px;
+	border:1px solid #dcdcdc;
+	/*display:inline-block;*/
+	color:#0c49a6;
+	font-family:"Open Sans", Arial, Helvetica, sans-serif;
+	font-size:19px;
+	font-weight:bold;
+	font-style:normal;
+	height:35px;
+	line-height:35px;
+	/*width:100px;*/
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 2px 2px #ffffff;
+	padding:0px;
+	margin:0px;
+	margin-top:2px;
+}
+
+tr.rand_categorie{
+padding:0px;
+border-spacing:0px;
+/*outline:1px solid red;*/
+}
+
+tr.h_rand_categorie{
+padding:0px;
+border-spacing:0px;
+/*outline:1px solid red;*/
+}
+
+tr.rand_categorie td
+{
+border: 1px solid #dcdcdc;
+padding:4px;
+}
+tr.rand_categorie th
+{
+border: 1px solid #dcdcdc;
+background-color: #eaeaea;
+padding:4px;
+}
+
+.titlu_categorie
+{
+font-weight:bold;
+color:lightblue;
+font-size:18px;
+
+}
+
+.descriere_categorie
+{
+font-style:italic;
+color:grey;
+font-size:12px;
+
+}
+
+
+.forum_col_marg{
+width:75px;
+}
+.tabel_forum{
+width:700px;
+border-spacing:0px;
+/*border-collapse:collapse;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ul.opt_men
+{
+position:relative;
+list-style-type:none;
+}
+ul.opt_men>li
+{
+font-weight:bold;
+}
+
+ul.opt_men>li>a
+{
+text-decoration:none;
+color:navy;
+}
+
+
+ul.opt_men>li>a:hover
+{
+opacity:0.5;
+filter:alpha(opacity=50);
+}
+
+
+ul.opt_men>li.meniu_bord
+{
+border-bottom:1px dashed grey;
+}
+/*-----------------------------------------
+Cerinte exercitii recapitulative -----------
+--------------------------------------------*/
+ol#cerinte li{
+	margin-top:1em;
+	margin-bottom:1.2em;
+}
+
+/* -------------------------media queries ------------------------------------------*/
+@media screen and (max-width:650px){
+	
+	html{
+		font-size:12px;
+	}
+	
+	header.principal>h1{
+		font-size:1.8em;
+		line-height:2.5em;
+		height:2.5em;
+	}
+	
+	div#nume_login{
+		position:static;
+		width:100%;
+		padding-top:0;
+	}
+	div#nume_login::after {
+			content: " ";
+			display: block;
+			height: 0; /*sau cat aveti nevoie*/
+			clear: both;
+			overflow: hidden;
+
+	}
+	
+	div#nume_login div.col1{
+		width:auto;
+		
+	}
+
+	
+	div#nume_login>*{
+		float:left;
+	}
+	
+	div#nume_login form{
+		clear:left;
+		width:100%
+	}
+	
+	div#nume_login form *{
+		float:left;
+	}
+	div#nume_login div.labelInput{
+	width:50%;
+	}
+
+}
+
+
+
+@media screen and (max-width:400px){
+	
+	html{
+		font-size:10px;
+	}
+	
+	header.principal>h1{
+		font-size:1.8em;
+		line-height:2.5em;
+		height:2.5em;
+	}
+}

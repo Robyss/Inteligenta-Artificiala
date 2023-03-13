@@ -1,0 +1,104 @@
+Metoda UCS
+Numarul de solutii generate: 3
+
+Solutia nr 1: 
+0)
+[1, 4]  				
+[2, 3]  [4, 8]  		
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 0     Costul mutarii: 0
+
+1)
+[2, 3]  [4, 8]  [1, 4]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 3     Costul mutarii: 3
+
+2)
+				[2, 3]  
+		[4, 8]  [1, 4]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 4     Costul mutarii: 1
+
+Drum de lungime: 2
+Costul total: 4
+Timpul de executie: 15.0027 ms | 0.0150 s
+Numarul maxim de noduri existente in memorie: 28
+Numarul total de noduri calculate: 34
+
+#################################### 
+
+Solutia nr 2: 
+0)
+[1, 4]  				
+[2, 3]  [4, 8]  		
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 0     Costul mutarii: 0
+
+1)
+		[1, 4]  		
+[2, 3]  [4, 8]  		
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 3     Costul mutarii: 3
+
+2)
+[2, 3]  [4, 8]  [1, 4]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 6     Costul mutarii: 3
+
+3)
+				[2, 3]  
+		[4, 8]  [1, 4]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 7     Costul mutarii: 1
+
+Drum de lungime: 3
+Costul total: 7
+Timpul de executie: 25.9950 ms | 0.0260 s
+Numarul maxim de noduri existente in memorie: 53
+Numarul total de noduri calculate: 70
+
+#################################### 
+
+Solutia nr 3: 
+0)
+[1, 4]  				
+[2, 3]  [4, 8]  		
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 0     Costul mutarii: 0
+
+1)
+[1, 4]  				
+[2, 3]  		[4, 8]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 4     Costul mutarii: 4
+
+2)
+[2, 3]  [1, 4]  [4, 8]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 7     Costul mutarii: 3
+
+3)
+		[2, 3]  		
+		[1, 4]  [4, 8]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 8     Costul mutarii: 1
+
+Drum de lungime: 3
+Costul total: 8
+Timpul de executie: 44.9951 ms | 0.0450 s
+Numarul maxim de noduri existente in memorie: 94
+Numarul total de noduri calculate: 126
+
+#################################### 
+

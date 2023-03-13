@@ -1,0 +1,94 @@
+Metoda IDA_star
+Numarul de solutii generate: 3
+
+Solutia nr 1: 
+0)
+[3, 8]  				
+[4, 5]  		[3, 4]  
+[1, 2]  		[2, 5]  
+------------------------
+Costul drumului: 0     Costul mutarii: 0
+
+1)
+[4, 5]  		[3, 4]  
+[1, 2]  [3, 8]  [2, 5]  
+------------------------
+Costul drumului: 5     Costul mutarii: 5
+
+2)
+		[4, 5]  [3, 4]  
+[1, 2]  [3, 8]  [2, 5]  
+------------------------
+Costul drumului: 6     Costul mutarii: 1
+
+Drum de lungime: 2
+Costul total: 6
+Timpul de executie: 31.9979 ms | 0.0320 s
+Numarul maxim de noduri existente in memorie: 3
+Numarul total de noduri calculate: 9
+
+#################################### 
+
+Solutia nr 2: 
+0)
+[3, 8]  				
+[4, 5]  		[3, 4]  
+[1, 2]  		[2, 5]  
+------------------------
+Costul drumului: 0     Costul mutarii: 0
+
+1)
+[4, 5]  		[3, 4]  
+[1, 2]  [3, 8]  [2, 5]  
+------------------------
+Costul drumului: 5     Costul mutarii: 5
+
+2)
+		[4, 5]  [3, 4]  
+[1, 2]  [3, 8]  [2, 5]  
+------------------------
+Costul drumului: 6     Costul mutarii: 1
+
+Drum de lungime: 2
+Costul total: 6
+Timpul de executie: 51.9710 ms | 0.0520 s
+Numarul maxim de noduri existente in memorie: 3
+Numarul total de noduri calculate: 9
+
+#################################### 
+
+Solutia nr 3: 
+0)
+[3, 8]  				
+[4, 5]  		[3, 4]  
+[1, 2]  		[2, 5]  
+------------------------
+Costul drumului: 0     Costul mutarii: 0
+
+1)
+[4, 5]  		[3, 4]  
+[1, 2]  [3, 8]  [2, 5]  
+------------------------
+Costul drumului: 5     Costul mutarii: 5
+
+2)
+				[4, 5]  
+				[3, 4]  
+[1, 2]  [3, 8]  [2, 5]  
+------------------------
+Costul drumului: 6     Costul mutarii: 1
+
+3)
+		[4, 5]  [3, 4]  
+[1, 2]  [3, 8]  [2, 5]  
+------------------------
+Costul drumului: 7     Costul mutarii: 1
+
+Drum de lungime: 3
+Costul total: 7
+Timpul de executie: 52.9709 ms | 0.0530 s
+Numarul maxim de noduri existente in memorie: 4
+Numarul total de noduri calculate: 11
+
+#################################### 
+

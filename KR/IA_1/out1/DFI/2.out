@@ -1,0 +1,32 @@
+Metoda DFI
+Numarul de solutii generate: 1
+
+Solutia nr 1: 
+0)
+[1, 4]  				
+[2, 3]  [4, 8]  		
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 0     Costul mutarii: 0
+
+1)
+[2, 3]  [4, 8]  [1, 4]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 3     Costul mutarii: 3
+
+2)
+				[2, 3]  
+		[4, 8]  [1, 4]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+Costul drumului: 4     Costul mutarii: 1
+
+Drum de lungime: 2
+Costul total: 4
+Timpul de executie: 2.0001 ms | 0.0020 s
+Numarul maxim de noduri existente in memorie: 3
+Numarul total de noduri calculate: 9
+
+#################################### 
+

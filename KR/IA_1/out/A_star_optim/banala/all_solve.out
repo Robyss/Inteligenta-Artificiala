@@ -1,0 +1,31 @@
+Metoda A_star_optim
+Numarul de solutii generate: 1
+
+Solutia nr 1: 
+0)
+[3, 8]  				
+[4, 5]  		[3, 4]  
+[1, 2]  		[2, 5]  
+------------------------
+Costul drumului: 0     Costul mutarii: 0
+
+1)
+[4, 5]  		[3, 4]  
+[1, 2]  [3, 8]  [2, 5]  
+------------------------
+Costul drumului: 5     Costul mutarii: 5
+
+2)
+		[4, 5]  [3, 4]  
+[1, 2]  [3, 8]  [2, 5]  
+------------------------
+Costul drumului: 6     Costul mutarii: 1
+
+Drum de lungime: 2
+Costul total: 6
+Timpul de executie: 9.9988 ms | 0.0100 s
+Numarul maxim de noduri existente in memorie: 26
+Numarul total de noduri calculate: 43
+
+#################################### 
+

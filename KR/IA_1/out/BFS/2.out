@@ -1,0 +1,72 @@
+Metoda BFS
+Numarul de solutii generate: 3
+
+Solutia nr 1: 
+0)
+[1, 4]  				
+[2, 3]  [4, 8]  		
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+
+1)
+[2, 3]  [4, 8]  [1, 4]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+
+Drum de lungime: 1
+Timpul de executie: 5.9929 ms | 0.0060 s
+Numarul maxim de noduri existente in memorie: 10
+Numarul total de noduri calculate: 11
+
+#################################### 
+
+Solutia nr 2: 
+0)
+[1, 4]  				
+[2, 3]  [4, 8]  		
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+
+1)
+		[1, 4]  		
+[2, 3]  [4, 8]  		
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+
+2)
+[2, 3]  [4, 8]  [1, 4]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+
+Drum de lungime: 2
+Timpul de executie: 17.9915 ms | 0.0180 s
+Numarul maxim de noduri existente in memorie: 31
+Numarul total de noduri calculate: 40
+
+#################################### 
+
+Solutia nr 3: 
+0)
+[1, 4]  				
+[2, 3]  [4, 8]  		
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+
+1)
+[1, 4]  				
+[2, 3]  		[4, 8]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+
+2)
+[2, 3]  [1, 4]  [4, 8]  
+[3, 7]  [1, 9]  [1, 8]  
+------------------------
+
+Drum de lungime: 2
+Timpul de executie: 32.9914 ms | 0.0330 s
+Numarul maxim de noduri existente in memorie: 51
+Numarul total de noduri calculate: 71
+
+#################################### 
+

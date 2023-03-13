@@ -1,0 +1,62 @@
+########  TODO  ########
+
+
+Pentru adancimi mai mari de 3 sa se salveze arborele alphabeta si sa se plece
+de la ce este calculat deja pentru aflarea urmatoarei mutari a calculatorului
+(ca sa nu fie recalculate mutarile la urmatoarea iteratie). Practic memoram subarborele
+mutarii alese din arborele alpha-beta generat anterior. Apoi jucatorul face mutarea M.
+Cautam in subarborele salvat mutarea jucatorului si pornim de la subarborele
+generat deja pentru ea si il continuam pentru a afla noua mutare a calculatorului.
+
+
+Optiunile de inrerupere, salvare si continuare joc. La apasarea tastei s, starea jocului
+se va salva intr-un fisier text (numele fisierului va fi cerut utilizatorului - acesta poate
+introduce numele fie in interfata grafica fie in consola). Fisierul va fi salvat intr-un folder numit
+"salvari" al jocului. La intrarea in joc, utulizatorul va primi ca prima intrebare din partea programului
+daca vrea sa incarce un joc si i se va afisa continutul fiserului de salvari, fiecare fisier avand un numar
+de ordine. Utilizatorul va raspunde cu numarul de ordine si va putea continua jocul din stadiul in care
+l-a lasat (tabla si alti parametri se vor incarca din fisier).
+
+
+
+
+##############################
+##############################
+
+
+
+
+
+
+1. Afisarea timpului de gandire (jucator + bot)
+2. Afisarea scorurilor
+3. Afisarea numarului de noduri generate
+
+
+
+
+
+1) Determinarea punctelor:
+- Parcurgem de la 1,N-1 toate coordonatele si verificam vecinii
+ directi daca au aceeasi valoare, astfel incat sa formam
+ o secventa valida.
+
+- Pentru margini, vedem daca suntem pe marginea verticala sau
+orizontala si verificam doar acel caz. Practic, colturile
+nu pot fi punctul din mijloc al unui interval, deci nu
+merita analizate (parcurgem tot de la 1 la N-1).
+
+
+2) Determinarea mutarilor valide:
+- Parcurgem fiecare spatiu liber. La gasirea unui spatiu gol
+parcurgem din nou in cautarea unui simbol respectiv jucatorului.
+Daca am gasit simbol in range-ul K1/K2, adaugam mutarea.
+
+
+3) Tura fiecarui jucator:
+- Jucatorii muta alternativ, insa exista posibilitatea ca in
+acest joc un jucator sa ramana fara mutari posibile. In aceasta
+situatie va muta doar jucatorul cu mutari posibile.
+
+
+

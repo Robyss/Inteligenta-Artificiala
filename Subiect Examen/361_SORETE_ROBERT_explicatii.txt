@@ -1,0 +1,5 @@
+In cerinta nu se specifica restrictiile parametrilor problemei, abia la exercitiul 3 se determina.
+
+Nu avem solutii deoarece avem doar un loc in barca
+2noduri: Avem 2 cofetari si 2 locuri in barca
+input_final: Nu avem niciun omulet: stare finala 

@@ -1,0 +1,51 @@
+1.
+2. generare_succesor()
+3.
+
+A*
+Folosim priority_queue(f(nod), nod)
+Pentru pq avem nevoie de __eq__ si __lt__
+Pentru nod < nod comparam in primul rand
+
+
+Euristici
+
+Euristicile folosite:
+- euristica banala
+- euristica admisibila 1
+- euristica admisibila 2
+- euristica admisibila 3 (euristica sef)
+- euristica neadmisibila
+
+Voi descrie pentru fiecare euristica metoda de calculare:
+
+Euristica banala:
+Asa cum ii spune numele, euristica banala nu calculeaza nimic special.
+Daca nodul este scop, atunci h(nod) = 0, altfel este 1.
+
+Euristica admisibila 1:
+Determinăm pentru fiecare stivă dacă este necesară o mutare.
+Parcurgem fiecare stivă de jos in sus. Daca intervalul de sus nu este inclus
+în interiorul intervalului curent, este necesară o mutare.
+Părăsim stiva dacă am gasit un interval ce trebuie mutat sau dacă
+am parcurs intreaga stivă.
+
+De exemplul, în figura există două intervale care se află nepotrivit în stivă,
+anume [3,6] din stiva 1 și [4,6] din stiva 3. Astfel, numărul minim de mutări
+necesare pentru a ajunge la o stare scop este 2.
+
+Euristica admisibilă 2:
+
+Are același concept ca euristica admisibilă 1. în plus, dacă intervalul de mai sus nu
+nu este inclus in intervalul curent, toate intervalele de deasupra intervalului curent
+trebuie mutate.
+
+Din exemplul anterior, conform euristicii, reies 3 mutări necesare
+
+
+
+
+
+
+
+- Parcurgem fiecare stiva de jos in jus
